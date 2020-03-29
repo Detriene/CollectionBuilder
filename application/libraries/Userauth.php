@@ -47,10 +47,6 @@ class Userauth  {
       // verify if form's data coresponds to database's data
       if ($this->userIsInDatabase() == false)
       {
-        if ($this->frozen == true)
-        {
-          return 'Account Frozen';
-        }
         return 'Invalid username/password!';
       }
       else
@@ -76,27 +72,7 @@ class Userauth  {
       if ($this->validSessionExists() == false)
       {
         $this->redirect($this->login_page);
-      }
-      $CI =& get_instance();
-      //print_r( $acl[$page][$_SESSION['accesslevel']] );
-      $permissions = $CI->config->item('acl');
-     // print_r($permissions);
-        if ( $permissions[$page][$_SESSION['accesslevel']] == false){
-          switch ($_SESSION['accesslevel'])
-          {
-            case "member":
-              $this->redirect(base_url() . "index.php?/Members/ ");
-              break;
-            case "editor":
-              $this->redirect(base_url() . "index.php?/Editors/");
-              break;
-            default:
-              $this->redirect(base_url() . "index.php?/Home/");
-              break;
-          }
-        } 
-      
-		 
+      }  
       // Access Control List checking goes here..
       // Does user have sufficient permissions to access page?
       // Ex. Can a bronze level access the Admin page?   
@@ -161,7 +137,7 @@ class Userauth  {
     public function userIsInDatabase() 
     {
       $CI =& get_instance();
-      $results = $CI->db->query("SELECT username, accesslevel, password, status FROM userslab4");
+      $results = $CI->db->query("SELECT username, password FROM sep_users");
       $userlist = $results->result_array();
       // Remember: you can get CodeIgniter instance from within a library with:
       // $CI =& get_instance();
@@ -171,16 +147,10 @@ class Userauth  {
       // Access database to verify username and password from database table
       foreach ($userlist as $user)
       {
-        if ($user['status'] == "Y")
-        {
-          $this->frozen = true;
-          return false;
-        }
         if ($this->username == $user['username'])  
         {    
           if ($this->password == $user['password'])
           {
-            $this->access = $user['accesslevel'];
             $valid = true;
             return $valid;
           }
@@ -212,22 +182,8 @@ class Userauth  {
     */
     public function writeSession() 
     {
-        $_SESSION['username'] = $this->username;
-        $_SESSION['accesslevel'] = $this->access;
-
-        switch ($this->access)
-        {
-          case "member":
-            $_SESSION['basepage'] = base_url() . "index.php?/Members";
-            break;
-            case "editor":
-              $_SESSION['basepage'] = base_url() . "index.php?/Editors";
-              break;
-            case "admin":
-              $_SESSION['basepage'] = base_url() . "index.php?/Admin";
-              break;
-        }
-        
+      $_SESSION['username'] = $this->username;
+      $_SESSION['basepage'] = base_url() . "index.php?/Home";
     }
 	
     /**

@@ -7,15 +7,12 @@
     <?= form_open("Login/loginuser") ?>
         <?= form_fieldset("Login credentials"); ?>
             <div class ="formgroup">
-                <?= form_label('Enter your Email Address:', 'email'); ?>
-                <?= form_input(array('name' => 'email',
-                'id' => 'email',
-                'type' => 'email',
+                <?= form_label('Enter your username:', 'username'); ?>
+                <?= form_input(array('name' => 'username',
+                'id' => 'username',
                 'class' => 'form-control',
-                'placeholder' => 'Enter Email',
-                'aria-describedby' => 'emailHelp',
-                'value' => set_value('email',"") )); ?>
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                'placeholder' => 'Enter username',
+                'value' => set_value('username',"") )); ?>
             </div>
             <div class="formgroup">
                 <?= form_label('Password:', 'password'); ?> <br>
