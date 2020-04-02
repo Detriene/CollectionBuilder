@@ -11,6 +11,7 @@ class Home extends CI_Controller
     parent::__construct();
 
     $this->TPL['loggedin'] = $this->userauth->validSessionExists();
+    $this->getpublicsets();
     $this->TPL['active'] = array(
       'home' => true,
       'collection' => false,
@@ -18,6 +19,10 @@ class Home extends CI_Controller
       'login' => false,
       'signup' => false
     );
+  }
+  public function getpublicsets(){
+    $sets = $this->Sets_model->getpublicsets();
+    $this->TPL['sets'] = $sets;
   }
 
   public function display()

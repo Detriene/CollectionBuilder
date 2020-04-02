@@ -9,6 +9,9 @@ var showModal = function(array) {
         $("#buttonItemUnowned").removeClass('d-none');
     }
     $("#itemName").html(array['Name']);
+    $('#itemDesc').html(array['Description']);
+    $('#year').html(array['Year']);
+    $('#condition').html(array['ItemCondition']);
 };
 
 var changeOwned = function(owned) {
