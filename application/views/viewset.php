@@ -1,4 +1,5 @@
-<h2 class="title">Viewing Collection - <?= $collection['Name'] ?></h2>
+<? print_r($set) ?>
+<h2 class="title">Viewing Set- <?= $sets['Name'] ?></h2>
 <br><br>
 <div>
     <!-- Add edit and share buttons -->
@@ -46,11 +47,6 @@
                 <h5 class="modal-body" id="itemYear"></h5>
                 <h5 class="modal-body" id="itemCondition"></h5>
                 <h5 class="modal-body" id="itemDate"></h5>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" onclick="removeFromCollection('<?= base_url() ?>', '<?= $collection['CollectionID'] ?>')">Remove from Collection</button>
-                <button id="buttonMarkOwned" type="button" class="btn btn-primary d-none" onclick="changeOwned(<?= $collection['CollectionID'] ?>, true)">Mark as Owned</button>
-                <button id="buttonMarkUnowned" type="button" class="btn btn-secondary d-none" onclick="changeOwned(<?= $collection['CollectionID'] ?>, false)">Mark as Unowned</button>
             </div>
         </div>
     </div>
