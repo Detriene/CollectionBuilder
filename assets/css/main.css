@@ -33,7 +33,19 @@ li a:hover {
   padding:  5px 5px 1px 5px;
 }
 
+.title {
+    text-align: center;
+}
 
+.collectionItem:hover {
+    cursor: pointer;
+}
+
+a.nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
 
 /* Source: http://cssmenumaker.com/blog/stylish-css-tables-tutorial */
 
