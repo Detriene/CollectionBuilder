@@ -15,7 +15,7 @@
         <a class="nav-item nav-link" href="<?= base_url(); ?>index.php?/Login/Logout">Log Out</a>
       <? } else { ?>
         <a <? if ($active['login']) { ?> class="nav-item nav-link active" <? } else { ?> class="nav-item nav-link" <? } ?>class="nav-item nav-link" href="<?= base_url(); ?>index.php?/Login">Log In</a>
-        <a <? if ($active['login']) { ?> class="nav-item nav-link active" <? } else { ?> class="nav-item nav-link" <? } ?>class="nav-item nav-link" href="<?= base_url(); ?>index.php?/SignUp">Sign Up</a>
+        <a <? if ($active['signup']) { ?> class="nav-item nav-link active" <? } else { ?> class="nav-item nav-link" <? } ?>class="nav-item nav-link" href="<?= base_url(); ?>index.php?/Signup">Sign Up</a>
       <? } ?>
     </div>
   </div>

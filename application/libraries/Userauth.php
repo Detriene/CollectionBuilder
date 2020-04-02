@@ -137,7 +137,7 @@ class Userauth  {
     public function userIsInDatabase() 
     {
       $CI =& get_instance();
-      $results = $CI->db->query("SELECT username, password FROM sep_users");
+      $results = $CI->db->query("SELECT username, password, UserID FROM sep_Users");
       $userlist = $results->result_array();
       // Remember: you can get CodeIgniter instance from within a library with:
       // $CI =& get_instance();
@@ -152,6 +152,8 @@ class Userauth  {
           if ($this->password == $user['password'])
           {
             $valid = true;
+            echo $user['userid'];
+            $this->userid = $user['UserID'];
             return $valid;
           }
           $valid = false;
@@ -183,6 +185,7 @@ class Userauth  {
     public function writeSession() 
     {
       $_SESSION['username'] = $this->username;
+      $_SESSION['userid'] =  $this->userid;
       $_SESSION['basepage'] = base_url() . "index.php?/Home";
     }
 	

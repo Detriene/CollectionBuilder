@@ -9,7 +9,7 @@ class Collections extends CI_Controller
     {
         parent::__construct();
 
-        $this->TPL['loggedin'] = $this->userauth->validSessionExists();
+        $this->TPL['loggedin'] = $this->userauth->loggedin('collection');
         $this->TPL['active'] = array(
             'home' => false,
             'collection' => true,
@@ -30,7 +30,6 @@ class Collections extends CI_Controller
     }
     private function selectUsersCollections() 
     {
-        $_SESSION['userid'] = 1;
         $query = $this->db->query("SELECT CollectionID FROM sep_UserCollections WHERE UserID=?", array($_SESSION['userid']));
         $collections = $query->result_array();
 
